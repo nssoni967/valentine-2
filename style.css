@@ -133,3 +133,21 @@ body { background-color: var(--bg-outside); font-family: 'Montserrat', sans-seri
 .poem-footer { border-top: 1px solid rgba(255,255,255,0.3); margin-top: 15px; padding-top: 10px; font-size: 0.65rem; text-align: center; font-weight: bold; }
 .footer-polaroid { position: relative; width: 220px; margin: 30px auto 0 auto; transform: rotate(-2deg); display: block; left: 0; top: 0; }
 .polaroid-caption { font-family: 'Great Vibes', cursive; font-size: 1.5rem; text-align: center; margin-top: 5px; }
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    /* Force images to be colorful on mobile (since hover doesn't exist) */
+    .polaroid img {
+        filter: grayscale(0%) !important;
+    }
+    
+    /* Optional: Make the text slightly bigger on mobile for readability */
+    .envelope-card {
+        font-size: 0.75rem; 
+    }
+    
+    /* Adjust spacing for mobile screens */
+    .main-wrapper {
+        padding: 10px;
+    }
+}
