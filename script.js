@@ -114,3 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+// Add this inside the triggerAnimations() function in script.js
+
+// Animate grayscale to color on scroll
+gsap.utils.toArray(".polaroid img").forEach(img => {
+    gsap.to(img, {
+        filter: "grayscale(0%)", // Fade to color
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: img,
+            start: "top 80%", // Starts when image is 80% down the screen
+            toggleActions: "play none none reverse"
+        }
+    });
+});
