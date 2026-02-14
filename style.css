@@ -1,0 +1,135 @@
+:root {
+    --bg-outside: #a81c21;
+    --bg-card: #f9f3e9;
+    --text-dark: #3a2e2b;
+    --red-accent: #c1272d;
+    --white: #ffffff;
+}
+
+/* --- NEW: Romantic Start Screen --- */
+#start-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, #d63031 0%, #63080b 100%);
+    color: var(--white);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 9999;
+}
+.heart-beat { font-size: 5rem; animation: heartbeat 1.5s infinite; }
+@keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+.intro-title { font-family: 'Great Vibes', cursive; font-size: 4rem; margin-top: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.intro-subtitle { font-family: 'Montserrat', sans-serif; font-size: 1rem; margin-bottom: 30px; letter-spacing: 2px; opacity: 0.8; }
+
+#start-btn {
+    padding: 15px 40px; border-radius: 50px; border: 2px solid white;
+    background: rgba(255,255,255,0.2); color: white;
+    font-size: 1.2rem; cursor: pointer; backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+#start-btn:hover { background: white; color: var(--red-accent); transform: scale(1.1); }
+
+/* Floating hearts bg */
+.floating-hearts span {
+    position: absolute; bottom: -50px; color: rgba(255,255,255,0.3); font-size: 2rem;
+    animation: floatUp 6s linear infinite;
+}
+.floating-hearts span:nth-child(1) { left: 10%; animation-duration: 5s; }
+.floating-hearts span:nth-child(2) { left: 30%; animation-duration: 7s; }
+.floating-hearts span:nth-child(3) { left: 70%; animation-duration: 4s; }
+.floating-hearts span:nth-child(4) { left: 90%; animation-duration: 6s; }
+@keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }
+
+/* --- NEW: Premium Music Player --- */
+.music-section { display: flex; justify-content: center; width: 100%; }
+.player-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    width: 90%; max-width: 350px; padding: 15px;
+    border-radius: 20px;
+    display: flex; align-items: center; gap: 15px;
+    box-shadow: 0 8px 20px rgba(193, 39, 45, 0.15);
+    cursor: pointer; transition: 0.3s;
+}
+.player-card:active { transform: scale(0.98); }
+
+.player-disk {
+    width: 60px; height: 60px; background: #333; border-radius: 50%;
+    position: relative; flex-shrink: 0;
+}
+.disk-inner {
+    width: 25px; height: 25px; background: var(--red-accent); border-radius: 50%;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    border: 2px solid white;
+}
+.player-disk.playing { animation: spinDisk 3s linear infinite; }
+@keyframes spinDisk { 100% { transform: rotate(360deg); } }
+
+.player-info { flex-grow: 1; overflow: hidden; }
+.song-label { font-size: 0.6rem; text-transform: uppercase; color: #888; letter-spacing: 1px; }
+.song-title { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--red-accent); margin-bottom: 5px; white-space: nowrap;}
+.progress-bar { width: 100%; height: 4px; background: #ddd; border-radius: 2px; overflow: hidden; }
+.fill { width: 0%; height: 100%; background: var(--red-accent); transition: width 0.2s; }
+.player-card.playing .fill { animation: progress 180s linear forwards; } /* Simple simulation */
+
+.play-icon { font-size: 1.5rem; color: var(--red-accent); padding-right: 10px; }
+
+
+/* --- EXISTING STYLES (Keep these from previous response) --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-outside); font-family: 'Montserrat', sans-serif; color: var(--text-dark); display: flex; justify-content: center; }
+.main-wrapper { width: 100%; max-width: 480px; background-color: var(--bg-outside); padding: 20px 10px; }
+.card-container { background-color: var(--bg-card); width: 100%; border-radius: 20px; padding: 30px 15px 60px 15px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+/* Typography */
+.cursive-subtitle { font-family: 'Great Vibes', cursive; color: var(--red-accent); font-size: 2.2rem; }
+.center-text { text-align: center; }
+.mt-40 { margin-top: 40px; }
+.small-text { font-size: 0.7rem; color: #777; }
+
+/* Top Pill */
+.top-pill { background: var(--white); color: var(--text-dark); padding: 10px 20px; border-radius: 30px; text-align: center; font-size: 0.8rem; font-weight: 600; width: max-content; margin: 0 auto 30px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.bg-text { font-family: 'Great Vibes', cursive; color: var(--red-accent); opacity: 0.15; font-size: 2rem; line-height: 1.2; position: absolute; top: 80px; left: 10px; transform: rotate(-10deg); z-index: 1; }
+
+/* Images */
+.polaroid-group { position: relative; height: 320px; margin-top: 20px; z-index: 2; }
+.polaroid { background: var(--white); padding: 8px 8px 30px 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: absolute; cursor: pointer; transition: transform 0.3s; }
+.polaroid img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: 0.3s; }
+.polaroid:hover img { filter: grayscale(0%); }
+.img-left { width: 180px; transform: rotate(-8deg); left: 10%; top: 20px; z-index: 3; }
+.img-right { width: 170px; transform: rotate(6deg); right: 10%; top: 60px; z-index: 2; }
+
+/* Names & Envelope */
+.names-title { font-family: 'Great Vibes', cursive; font-size: 2.5rem; text-align: center; color: var(--text-dark); margin-top: -10px; position: relative; z-index: 5; }
+.painted-heart { font-size: 2.5rem; text-align: center; margin-bottom: 20px; }
+.envelope-container { position: relative; width: 260px; height: 180px; margin: 0 auto; z-index: 2; }
+.envelope-back { position: absolute; bottom: 0; width: 100%; height: 120px; background-color: #9c1b20; border-radius: 5px; }
+.envelope-card { position: absolute; bottom: 30px; left: 5%; width: 90%; height: 140px; background: var(--white); padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); transform: rotate(-3deg); font-size: 0.65rem; line-height: 1.4; color: #555; }
+.envelope-card h3 { font-family: 'Great Vibes', cursive; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 5px; }
+.envelope-front { position: absolute; bottom: 0; width: 100%; height: 120px; background-color: var(--red-accent); border-radius: 0 0 5px 5px; clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%); }
+
+/* Timeline Elements */
+.date-title { font-family: 'Great Vibes', cursive; font-size: 1.8rem; text-align: center; margin-top: 30px; }
+.divider-space { height: 60px; }
+.timeline-block { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; position: relative; padding: 0 10px; }
+.timeline-block.reverse { flex-direction: row-reverse; }
+.polaroid.mini-right { width: 110px; position: relative; right: 0; top: 0; transform: rotate(4deg); }
+.polaroid.mini-left { width: 110px; position: relative; left: 0; top: 0; transform: rotate(-4deg); }
+.timeline-text { width: 55%; }
+.left-text { text-align: left; padding-left: 15px; }
+.right-text { text-align: right; padding-right: 15px; }
+.time { font-weight: 600; font-size: 0.9rem; color: var(--red-accent); margin: 5px 0; }
+.location { font-size: 0.7rem; color: #666; }
+.heart-scatter { text-align: center; color: var(--red-accent); font-size: 1.2rem; margin: 30px 0; letter-spacing: 15px; }
+
+/* Poem Box */
+.red-poem-box { background: var(--red-accent); border-radius: 15px; padding: 25px 20px; margin-top: 40px; position: relative; color: var(--white); }
+.cutout-heart { position: absolute; left: -15px; top: 30px; width: 40px; height: 40px; background: var(--bg-card); transform: rotate(45deg); }
+.cutout-heart::before, .cutout-heart::after { content: ''; position: absolute; width: 40px; height: 40px; background: var(--bg-card); border-radius: 50%; }
+.cutout-heart::before { top: -20px; left: 0; }
+.cutout-heart::after { top: 0; left: -20px; }
+.cursive-subtitle.white { color: var(--white); margin-bottom: 10px; margin-left: 20px;}
+.red-poem-box p { font-size: 0.7rem; line-height: 1.5; margin-left: 20px; }
+.poem-footer { border-top: 1px solid rgba(255,255,255,0.3); margin-top: 15px; padding-top: 10px; font-size: 0.65rem; text-align: center; font-weight: bold; }
+.footer-polaroid { position: relative; width: 220px; margin: 30px auto 0 auto; transform: rotate(-2deg); display: block; left: 0; top: 0; }
+.polaroid-caption { font-family: 'Great Vibes', cursive; font-size: 1.5rem; text-align: center; margin-top: 5px; }
